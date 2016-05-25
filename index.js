@@ -42,11 +42,11 @@ module.exports = function (options) {
 			  objectName = "EStyleSheet"
 			}
 
-			if (options.module === 'es6' ) {
-				prefix = "import {" + objectName + "} from '" + moduleName + "';\nexport default " + objectName + ".create(";
+			if (options.module === 'commonjs' ) {
+				prefix = "var " + objectName + " = require('" + moduleName + "')." + objectName + ";\nmodule.exports = " + objectName + ".create(";
 				suffix = ");";
 			} else {
-				prefix = "var " + objectName + " = require('" + moduleName + "')." + objectName + ";\nmodule.exports = " + objectName + ".create(";
+				prefix = "import {" + objectName + "} from '" + moduleName + "';\nexport default " + objectName + ".create(";
 				suffix = ");";
 			}
 
