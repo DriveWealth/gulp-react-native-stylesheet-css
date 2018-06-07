@@ -33,18 +33,25 @@ module.exports = function (options) {
 			var prefix = "", suffix = "";
 			if (options.outputPlainObject) {
 				prefix = "module.exports = ";
-      } else {
-        var moduleName = "react-native"
-        var objectName = "StyleSheet"
+			} else {
+			var moduleName = "react-native"
+			var objectName = "StyleSheet"
 
-        if (options.withExtendedStyleSheet) {
-          moduleName = "react-native-extended-stylesheet"
-          objectName = "EStyleSheet"
-        }
+			if (options.withExtendedStyleSheet) {
+			  moduleName = "react-native-extended-stylesheet"
+			  objectName = "EStyleSheet"
+			}
 
+			if (options.module === 'commonjs' ) {
 				prefix = "var " + objectName + " = require('" + moduleName + "')." + objectName + ";\nmodule.exports = " + objectName + ".create(";
 				suffix = ");";
-      }
+			} else {
+				prefix = "import {" + objectName + "} from '" + moduleName + "';\nexport default " + objectName + ".create(";
+				suffix = ");";
+			}
+
+				
+			}
 
 			file.contents = new Buffer(prefix + style + suffix);
 

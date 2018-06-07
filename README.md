@@ -113,6 +113,7 @@ Option | Values | Default | Notes
 -------|--------|---------|------
 outputPlainObject | Boolean | false | If true, the final output will be only an object of style rules, without requiring React or building a React StyleSheet object.
 withExtendedStyleSheet | Boolean | false | Support for [react-native-extended-stylesheet](https://github.com/vitalets/react-native-extended-stylesheet)
+module | String | es6 | default support es6, if `commonjs`, it will create js for commonjs mudule.
 
 ## About
 
